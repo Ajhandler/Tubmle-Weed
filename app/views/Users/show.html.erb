@@ -1,0 +1,16 @@
+<h1>Look its:</h1>
+
+<%= @user.fname  %>
+
+<%= link_to 'back to dashboard', users_path %>
+
+<% if current_user and @user != current_user %>
+	<% if current_user.followeds.include? @user %>
+	<%= link_to 'unfollow', unfollow_user_path(@user), method: :post  %>
+	<% else %>
+	<%= link_to 'follow', follow_user_path(@user), method: :post  %>
+	<% end %>
+
+<%end%>
+
+<hr>

@@ -1,0 +1,9 @@
+<%= form_tag('/sessions', method: :post) do %>
+	<%= label_tag :email  %>
+	<%= text_field_tag :email %> <br>
+	<%= label_tag :password  %>
+	<%= password_field_tag :password %> <br>
+		<%= submit_tag %>
+<%end%>
+
+<%= link_to 'create account', new_user_path  %>

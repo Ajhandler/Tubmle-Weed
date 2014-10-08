@@ -1,0 +1,38 @@
+<%= current_user.fname %> <br>
+
+<%= link_to 'delete', current_user, method: :delete, data: {confirm: "Are you sure?"} %> <br>
+<%= link_to 'edit user', edit_user_path(current_user.id)  %><br>
+<%= link_to 'log out', logout_path, method: :delete  %><br>
+
+<%= form_for @post do |f|  %>
+	<%= f.label :title %>
+	<%= f.text_field :title  %>
+	<%= f.text_area :body %><br>
+	<%= f.submit %>
+<% end %>
+
+<hr>
+<h3> Following </h3>
+ <ul>
+ 	<% current_user.followeds.each do |user| %>
+ 	<li><%= link_to user.fname, user%></li>
+ 	<%end%>
+ </ul>
+ <hr>
+ <h3> Followers </h3>
+ <ul>
+ 	<% current_user.followers.each do |user| %>
+ 	<li><%= link_to user.fname, user%></li>
+ 	<%end%>
+ </ul>
+<hr>
+ <h3>followers posts</h3>
+
+ 	<ul>
+<% current_user.followeds.each do |user| %>
+   <% user.posts.each do |post| %>
+     <li> <%=post.body%>  <strong>By: <%=user.fname %></strong> </li>
+   <% end %>
+ <% end %>
+</ul>
+

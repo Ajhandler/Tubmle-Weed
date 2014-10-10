@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
  	before_action :set_user, only: [ :show, :edit, :update, :destroy, :follow, :unfollow]
+ 	
+ 	def current_user
+		session[:user_id] ? User.find(session[:user_id]) : nil
+	end
+
  	def index
  		@post = Post.new
  	end

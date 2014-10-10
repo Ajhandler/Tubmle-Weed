@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :posts
+	has_many :comments
 	validates_presence_of :fname, :emal, :password
 	has_many :relationships, foreign_key: :follower_id, dependent: :destroy
 	has_many :followeds, through: :relationships
